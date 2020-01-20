@@ -113,19 +113,32 @@ namespace TimedShutdown
             }
             else
             {
-                System.Diagnostics.Process process = new System.Diagnostics.Process();
-                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-                startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-                startInfo.FileName = "cmd.exe";
-                startInfo.Arguments = "/C shutdown -s -t " + textBox1.Text;
-                process.StartInfo = startInfo;
-                process.Start();
-                /*
-                string lul = "/C shutdown -s -t " + textBox1.Text;
-                Console.WriteLine(lul);
-                Console.WriteLine(textBox1.Text);
-                */
+                if (IsValid(textBox1.Text))
+                { 
+                    System.Diagnostics.Process process = new System.Diagnostics.Process();
+                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                    startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                    startInfo.FileName = "cmd.exe";
+                    startInfo.Arguments = "/C shutdown -s -t " + textBox1.Text;
+                    process.StartInfo = startInfo;
+                    process.Start();
+                    /*
+                    string lul = "/C shutdown -s -t " + textBox1.Text;
+                    Console.WriteLine(lul);
+                    Console.WriteLine(textBox1.Text);
+                    */
+                }
+                else
+                {
+                    MessageBox.Show("Only numbers are allowed!!", "Error!");
+                }
             }
+        }
+
+        public static bool IsValid(string str)
+        {
+            int i;
+            return int.TryParse(str, out i);
         }
     }
 }
