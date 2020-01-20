@@ -32,7 +32,7 @@
         <Button Click="Ev_0" Grid.Row="3" Grid.Column="1" Padding="5,2" Background="Red" Foreground="Blue" FontWeight="Bold" Width="130" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Content="0"/>
         <Button Click="Ev_OK" Grid.Row="3" Grid.Column="2" Padding="5,2" Background="Red" Foreground="Blue" FontWeight="Bold" Width="130" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Content="OK"/>
         <Label Grid.Row="1" Grid.Column="4" Content="Time(s) until shutdown: " HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" FontWeight="Bold" FontStyle="Italic" FontSize="20" />
-        <TextBox Grid.Row="2" Grid.Column="4" x:Name="textBox1" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="Tw Cen MT Condensed Extra Bold" FontWeight="Bold" FontStyle="Italic"/>
+        <TextBox Grid.Row="2" Grid.Column="4" x:Name="textBox1" Text="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="Tw Cen MT Condensed Extra Bold" FontWeight="Bold" FontStyle="Italic"/>
 
     </Grid>
 </Window>

@@ -96,11 +96,35 @@ namespace TimedShutdown
         {
             if (textBox1.Text == "")
             {
+                /*
+                System.Diagnostics.Process process = new System.Diagnostics.Process();
+                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                startInfo.FileName = "cmd.exe";
+                startInfo.Arguments = "/C shutdown -s -t 0";
+                process.StartInfo = startInfo;
+                process.Start();
+                
+                string lul = "/C shutdown -s -t 0" ;
+                Console.WriteLine(lul);
+                */
+
                 Console.WriteLine("Leer");
             }
             else
             {
+                System.Diagnostics.Process process = new System.Diagnostics.Process();
+                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+                startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+                startInfo.FileName = "cmd.exe";
+                startInfo.Arguments = "/C shutdown -s -t " + textBox1.Text;
+                process.StartInfo = startInfo;
+                process.Start();
+                /*
+                string lul = "/C shutdown -s -t " + textBox1.Text;
+                Console.WriteLine(lul);
                 Console.WriteLine(textBox1.Text);
+                */
             }
         }
     }
