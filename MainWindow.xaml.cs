@@ -140,5 +140,17 @@ namespace TimedShutdown
             int i;
             return int.TryParse(str, out i);
         }
+
+        private void Ev_Abort(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C shutdown -a";
+            process.StartInfo = startInfo;
+            process.Start();
+
+        }
     }
 }
