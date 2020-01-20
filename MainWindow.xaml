@@ -7,6 +7,32 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Button Click="Ev_1" Grid.Row="0" Padding="5,2" Background="Red" Foreground="Blue" FontWeight="Bold" Width="130" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26">1</Button>
+        <Button Click="Ev_2" Grid.Row="0" Grid.Column="1" Padding="5,2" Background="Red" Foreground="Blue" FontWeight="Bold" Width="130" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26">2</Button>
+        <Button Click="Ev_3" Grid.Row="0" Grid.Column="2" Padding="5,2" Background="Red" Foreground="Blue" FontWeight="Bold" Width="130" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26">3</Button>
+        <Button Click="Ev_4" Grid.Row="1" Padding="5,2" Background="Red" Foreground="Blue" FontWeight="Bold" Width="130" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26">4</Button>
+        <Button Click="Ev_5" Grid.Row="1" Grid.Column="1" Padding="5,2" Background="Red" Foreground="Blue" FontWeight="Bold" Width="130" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26">5</Button>
+        <Button Click="Ev_6" Grid.Row="1" Grid.Column="2" Padding="5,2" Background="Red" Foreground="Blue" FontWeight="Bold" Width="130" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26">6</Button>
+        <Button Click="Ev_7" Grid.Row="2" Padding="5,2" Background="Red" Foreground="Blue" FontWeight="Bold" Width="130" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26">7</Button>
+        <Button Click="Ev_8" Grid.Row="2" Grid.Column="1" Padding="5,2" Background="Red" Foreground="Blue" FontWeight="Bold" Width="130" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26">8</Button>
+        <Button Click="Ev_9" Grid.Row="2" Grid.Column="2" Padding="5,2" Background="Red" Foreground="Blue" FontWeight="Bold" Width="130" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26">9</Button>
+        <Button Click="Ev_Del" Grid.Row="3" Grid.Column="0" Padding="5,2" Background="Red" Foreground="Blue" FontWeight="Bold" Width="130" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Content="&lt;-"/>
+        <Button Click="Ev_0" Grid.Row="3" Grid.Column="1" Padding="5,2" Background="Red" Foreground="Blue" FontWeight="Bold" Width="130" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Content="0"/>
+        <Button Click="Ev_OK" Grid.Row="3" Grid.Column="2" Padding="5,2" Background="Red" Foreground="Blue" FontWeight="Bold" Width="130" Height="90" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="26" Content="OK"/>
+        <Label Grid.Row="1" Grid.Column="4" Content="Time(s) until shutdown: " HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" FontWeight="Bold" FontStyle="Italic" FontSize="20" />
+        <TextBox Grid.Row="2" Grid.Column="4" x:Name="textBox1" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="Tw Cen MT Condensed Extra Bold" FontWeight="Bold" FontStyle="Italic"/>
+
     </Grid>
 </Window>
