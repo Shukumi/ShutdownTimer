@@ -114,12 +114,25 @@ namespace TimedShutdown
             else
             {
                 if (IsValid(textBox1.Text))
-                { 
+                {
+                    long timeconvert;
+                    if (minutesRadio.IsChecked == true)
+                    {
+                        timeconvert = Int64.Parse(textBox1.Text) * 60;
+                    }
+                    else if (hoursRadio.IsChecked == true)
+                    {
+                        timeconvert = Int64.Parse(textBox1.Text) * 3600;
+                    }
+                    else
+                    {
+                        timeconvert = Int64.Parse(textBox1.Text);
+                    }
                     System.Diagnostics.Process process = new System.Diagnostics.Process();
                     System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
                     startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
                     startInfo.FileName = "cmd.exe";
-                    startInfo.Arguments = "/C shutdown -s -t " + textBox1.Text;
+                    startInfo.Arguments = "/C shutdown -s -t " + timeconvert.ToString();
                     process.StartInfo = startInfo;
                     process.Start();
                     /*
