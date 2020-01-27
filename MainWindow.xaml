@@ -38,8 +38,15 @@
             <RadioButton x:Name="minutesRadio" FontSize="14" FontWeight="Bold">Minutes</RadioButton>
             <RadioButton x:Name="hoursRadio" FontSize="14" FontWeight="Bold">Hours</RadioButton>
         </StackPanel>
-        <Label Grid.Row="1" Grid.Column="3" Content="Time until shutdown: " HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" FontWeight="Bold" FontStyle="Italic" FontSize="20" />
-        <TextBox Grid.Row="2" Grid.Column="3" x:Name="textBox1" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="Tw Cen MT Condensed Extra Bold" FontWeight="Bold" FontStyle="Italic"/>
+        <StackPanel Grid.Row="1" Grid.Column="3" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Content="Time left until shutdown: " HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" FontWeight="Bold" FontStyle="Italic" FontSize="20" />
+            <Label x:Name="TimeRemaining" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" FontWeight="Bold" FontStyle="Italic" FontSize="20" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="3" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label Grid.Row="1" Grid.Column="3" Content="Shutdown in: " HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Tw Cen MT Condensed Extra Bold" FontWeight="Bold" FontStyle="Italic" FontSize="20" />
+            <TextBox Grid.Row="2" Grid.Column="3" x:Name="textBox1" Text="" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="Tw Cen MT Condensed Extra Bold" FontWeight="Bold" FontStyle="Italic"/>
+        </StackPanel>
+        
 
     </Grid>
 </Window>

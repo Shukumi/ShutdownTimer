@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,9 +22,46 @@ namespace TimedShutdown
     /// </summary>
     public partial class MainWindow : Window
     {
+        string path = System.AppDomain.CurrentDomain.BaseDirectory + "/date.txt";
+        DateTime dt;
         public MainWindow()
         {
             InitializeComponent();
+            if (System.IO.File.Exists(path))
+            {
+                dt = DateTime.Parse(File.ReadAllText(path));
+            }
+            var aTimer = new System.Timers.Timer(1000);
+            aTimer.Elapsed += OnTimedEvent;
+            aTimer.Enabled = true;
+            
+        }
+
+        private void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            App.Current.Dispatcher.Invoke((Action)delegate
+            {
+                TimeSpan t = dt.Subtract(DateTime.Now);
+                Console.WriteLine(t);
+                if (System.IO.File.Exists(path))
+                {
+                    if (t.CompareTo(TimeSpan.Zero) < 0)
+                    {
+                        TimeRemaining.Content = "Last shutdown is done.";
+                    }
+                    else
+                    {
+                        string format = @"dd\:hh\:mm\:ss";
+                        TimeRemaining.Content = t.ToString(format);
+                    }
+                    
+                }
+                else
+                {
+                    TimeRemaining.Content = "No shutdown scheduled!";
+                }
+
+            });
         }
 
         private void Ev_0(object sender, RoutedEventArgs e)
@@ -133,8 +172,14 @@ namespace TimedShutdown
                     startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
                     startInfo.FileName = "cmd.exe";
                     startInfo.Arguments = "/C shutdown -s -t " + timeconvert.ToString();
+                    // startInfo.Arguments = "/C shutdown -s -t " + timeconvert.ToString() + " -c " + timeconvert.ToString();
                     process.StartInfo = startInfo;
                     process.Start();
+                    DateTime shutdownTime = DateTime.Now.AddSeconds(timeconvert);
+                    dt = shutdownTime;
+                    System.IO.File.WriteAllText(path, shutdownTime.ToString("dd/MM/yyyy hh:mm:ss"));
+                    Console.WriteLine(shutdownTime.ToString("dd/MM/yyyy hh:mm:ss"));
+
                     /*
                     string lul = "/C shutdown -s -t " + textBox1.Text;
                     Console.WriteLine(lul);
@@ -164,6 +209,18 @@ namespace TimedShutdown
             process.StartInfo = startInfo;
             process.Start();
 
+            if (System.IO.File.Exists(path))
+            {
+                try
+                {
+                    System.IO.File.Delete(path);
+                }
+                catch (System.IO.IOException ee)
+                {
+                    Console.WriteLine(ee.Message);
+                    return;
+                }
+            }
         }
     }
 }
